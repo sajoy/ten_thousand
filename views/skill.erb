@@ -7,16 +7,21 @@
   <%= erb(:errors, :locals => { :object => @skill }) %>
 
   <form action="/skill/<%= @skill.id %>" method="post">
-    <input type="text" name="title" placeholder="entry title: 'syntactic sugar'">
-    <select name="category">
+    Entry information: <input type="text" name="title"><br/>
+    Category: <select name="category">
       <% @categories.each do |cat| %>
       <option value="<%= cat.id %>"> <%= cat.name %> </option>
       <% end %>
-    </select>
-    <input type="text" name="rating" placeholder="skill-points: 1-5">
+    </select><br/>
+    Skill-points:<br/>
+    <% 5.times do |time| %>
+      <input type="radio" name="rating" value="<%= time + 1 %>"> <% (time + 1).times do %> <img src="/img/heart.gif"><% end %><br/>
+    <% end %>
+    <br/>
     <button type="submit" class="btn btn-xs">Add Entry</button>
   </form>
 
+  <% if @skill.entries.any? %>
   <h3>All Entries </h3>
   <div class="timeline">
     <ul>
@@ -25,6 +30,7 @@
       <% end %>
     </ul>
   </div>
+  <% end %>
 
 </div>
 

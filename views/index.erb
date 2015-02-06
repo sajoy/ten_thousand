@@ -7,10 +7,11 @@
       too harsh self-judgements. <br/>
       seconds of understanding, moments of clarity, </br>
       wishes, tries, searches, lessons, <br/>
-      and 10,000 more. 
+      and 10,000 more.
 
   </p>
 
+  <% if @entries.any? %>
   <h3>Most Recent Entries</h3>
   <div class="timeline">
     <ul>
@@ -22,9 +23,8 @@
         </li>
       <% end %>
     </ul>
-
   </div>
-
+  <% end %>
 
 </div>
 
