@@ -8,6 +8,13 @@ class Skill < ActiveRecord::Base
     self.entries.sum(:rating) / 10
   end
 
+  def date
+    day = created_at.day
+    month = created_at.month
+    year = created_at.year
+    pretty_date = "#{month}/#{day}/#{year}"
+  end
+
 private
 
   def capitalize

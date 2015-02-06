@@ -1,3 +1,5 @@
+body {font-family: 'Questrial', sans-serif;}
+
 .container {width: 100%;}
 
 .col-md-3 {
@@ -7,6 +9,11 @@
 
 .col-md-3 h3 {
   margin-top: 20px;
+}
+
+.edit_entry td{
+  padding: 5px;
+
 }
 
 header {
@@ -24,6 +31,11 @@ main {
 main a {color: #000; background-color: rgba(120,90,130, .5);}
 main a:hover {color: #000; text-decoration: none; background-color: rgba(120,90,130, 1);}
 
+
+.skill a {color: #fff; background-color: rgba(120,90,130, 0);}
+.skill a:hover {color: rgba(120,90,130, .5); text-decoration: none; background-color: rgba(120,90,130, 0);}
+
+.skill h2 {font-size: 4em; color: #fff;}
 
 .skill {
   height: 200px;

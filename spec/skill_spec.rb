@@ -21,6 +21,17 @@ describe(Skill) do
     end
   end
 
+  describe("#date") do
+    it("will return the date created in a pretty way") do
+      skill = Skill.create(name: "a")
+      day = skill.created_at.day
+      month = skill.created_at.month
+      year = skill.created_at.year
+      pretty_date = "#{month}/#{day}/#{year}"
+      expect(skill.date).to eq(pretty_date)
+    end
+  end
+
   it 'will destroy its entries' do
     entry = Entry.create(title: "x", rating: 5)
     skill = Skill.create(name: "ruby")

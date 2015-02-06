@@ -1,8 +1,9 @@
 <div class="col-md-3">
 
   <h2 class="inline">Skill: <%= @skill.name %></h2>
-    <a href="/skill/edit/<%= @skill.id %>" class="btn btn-xs glyphicon glyphicon-pencil"></a>
-  <p>Level: <%= @skill.level %></p>
+  <a href="/skill/edit/<%= @skill.id %>" class="btn btn-xs glyphicon glyphicon-pencil"></a><br/>
+  <p>Est: <%= @skill.date %>  <br/>
+  Level: <%= @skill.level %></p>
 
   <%= erb(:errors, :locals => { :object => @skill }) %>
   <h3>New Entry</h3>
@@ -39,7 +40,7 @@
   <% @skill.entries.each do |entry| %>
 
     <% entry.rating.times do %>
-      <img src="/img/heart.gif" title="<%= entry.date %>, <%= entry.category %>: <%= entry.title %>">
+      <img src="/img/heart.gif" title="<%= entry.date %>, <%= entry.category.name %>: <%= entry.title %>">
     <% end %>
   <% end %>
 
