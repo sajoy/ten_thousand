@@ -1,0 +1,58 @@
+.container {width: 100%;}
+
+.col-md-3 {
+  background: #ddd;
+  padding: 10px;
+}
+
+header {
+  padding: 5px;
+  background: #000;
+  margin-bottom: 10px;
+}
+
+header a {color: #fff;}
+header a:hover {color: rgba(120,90,130, 1); text-decoration: none;}
+
+main {
+  margin: 5px;
+}
+main a {color: #000; background-color: rgba(120,90,130, .5);}
+main a:hover {color: #000; text-decoration: none; background-color: rgba(120,90,130, 1);}
+
+
+.skill {
+  height: 200px;
+  width: 200px;
+  background: rgba(120,90,130, .5);
+  float: left;
+  margin: 0 5px 5px 5px;
+  padding: 5px;
+  text-align: center;
+}
+
+.add {
+  padding-top: 45px;
+  background: rgba(120,90,130, .2);
+  border: 2px dotted rgba(120,90,130, .5);
+}
+
+.inline {
+  display: inline;
+  margin-top: 20px;
+}
+
+.skill_delete {
+  text-align: right;
+}
+
+.timeline {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.timeline ul, li {
+  margin: 2px;
+  padding: 2px;
+  list-style: none;
+}

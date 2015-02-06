@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: skill_tracker
+
+test:
+  adapter: postgresql
+  database: skill_tracker_test

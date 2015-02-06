@@ -1,0 +1,40 @@
+<div class="col-md-3">
+
+  <h2 class="inline">Skill: <%= @skill.name %></h2>
+    <a href="/skill/edit/<%= @skill.id %>" class="btn btn-xs glyphicon glyphicon-pencil"></a>
+  <p>Level: <%= @skill.level %></p>
+
+  <%= erb(:errors, :locals => { :object => @skill }) %>
+
+  <form action="/skill/<%= @skill.id %>" method="post">
+    <input type="text" name="title" placeholder="entry title: 'syntactic sugar'">
+    <select name="category">
+      <% @categories.each do |cat| %>
+      <option value="<%= cat.id %>"> <%= cat.name %> </option>
+      <% end %>
+    </select>
+    <input type="text" name="rating" placeholder="skill-points: 1-5">
+    <button type="submit" class="btn btn-xs">Add Entry</button>
+  </form>
+
+  <h3>All Entries </h3>
+  <div class="timeline">
+    <ul>
+      <% @skill.entries.each do |entry| %>
+        <li><%= entry.date %>, <% if entry.category %><%= entry.category.name %> > <% end %> <%= entry.title %> (<% entry.rating.times do %> <img src="/img/heart.gif"><% end %> )</li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
+
+<div class="col-md-9">
+
+  <% @skill.entries.each do |entry| %>
+
+    <% entry.rating.times do %>
+      <img src="/img/heart.gif" title="<%= entry.date %>, <%= entry.category %>: <%= entry.title %>">
+    <% end %>
+  <% end %>
+
+</div>

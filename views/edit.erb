@@ -1,0 +1,88 @@
+<div class="col-md-4">
+
+  <a href="/skill/<%= @skill.id %>"><h2 class="inline">Skill: <%= @skill.name %></h2></a>
+  <p>Level: <%= @skill.level %></p>
+
+  <form action="/skill/edit/<%= @skill.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    Edit Skill Name: <input type="text" name="name" value="<%= @skill.name %>">
+    <button type="submit" class="btn btn-xs btn-success">rename</button>
+  </form>
+
+  <%= erb(:errors, :locals => { :object => @skill }) %>
+
+
+
+
+</div>
+
+<div class="col-md-4">
+
+  <h3>Edit Entries </h3>
+      <div class="timeline">
+
+        <ul>
+          <% @skill.entries.each do |entry| %>
+          <li>
+            <form action="/skill/entry/<%= entry.id %>" method="post">
+              <input type="hidden" name="_method" value="patch">
+              Title: <input type="text" name="title" value="<%= entry.title %>"><br/>
+              Category:
+              <select name="category">
+                <% @categories.each do |cat| %>
+                <!-- need: default selected as entry's cateog -->
+                <option value="<%= cat.id %>"> <%= cat.name %> </option>
+                <% end %>
+              </select>
+              Rating: <input type="text" size="2" name="rating" value="<%= entry.rating %>">
+              <button type="submit" class="btn btn-xs btn-info">Update Entry</button>
+            </form>
+            <form action="/skill/entry/<%= entry.id %>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <button type="submit" class="btn btn-xs btn-danger">Delete <%= entry.title %></button>
+
+            </form>
+            <hr>
+          </li>
+
+
+          <% end %>
+        </ul>
+
+      </div>
+</div>
+
+
+<div class="col-md-4">
+  <h3>Edit Categories</h3>
+  <form action="/skill/category/<%= @skill.id %>" method="post">
+    <input type="text" name="name" placeholder="category name">
+    <button type="submit">Add Category</button>
+  </form>
+
+  <div class="timeline">
+
+    <ul>
+      <% @categories.each do |cat| %>
+      <li>
+        <form action="/skill/category/<%= cat.id %>" method="post">
+          <input type="hidden" name="_method" value="patch">
+          Name: <input type="text" name="name" value="<%= cat.name %>"><br/>
+          <button type="submit" class="btn btn-xs btn-info">Update Category</button>
+        </form>
+        <form action="/skill/category/<%= cat.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" class="btn btn-xs btn-danger">Delete <%= cat.name %></button>
+
+        </form>
+        <hr>
+      </li>
+
+
+      <% end %>
+    </ul>
+
+  </div>
+
+
+</div>
