@@ -1,6 +1,6 @@
 <div class="col-md-4">
 
-  <a href="/skill/<%= @skill.id %>"><h2 class="inline">Skill: <%= @skill.name %></h2></a>
+  <a href="/skill/<%= @skill.id %>"><h2>Skill: <%= @skill.name %></h2></a>
   <p>Level: <%= @skill.level %></p>
 
   <form action="/skill/edit/<%= @skill.id %>" method="post">
@@ -30,11 +30,13 @@
               Category:
               <select name="category">
                 <% @categories.each do |cat| %>
-                <!-- need: default selected as entry's cateog -->
-                <option value="<%= cat.id %>"> <%= cat.name %> </option>
+                <option value="<%= cat.id %>" <% if entry.category_id == cat.id %> selected <% end %>> <%= cat.name %> </option>
                 <% end %>
-              </select>
-              Rating: <input type="text" size="2" name="rating" value="<%= entry.rating %>">
+              </select><br/>
+              Rating: <br/>
+              <% 5.times do |time| %>
+                <input type="radio" name="rating" value="<%= time + 1 %>" <% if (time + 1) == entry.rating %> checked <% end %>> <%= time + 1 %>
+              <% end %>
               <button type="submit" class="btn btn-xs btn-info">Update Entry</button>
             </form>
             <form action="/skill/entry/<%= entry.id %>" method="post">

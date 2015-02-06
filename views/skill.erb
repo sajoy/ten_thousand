@@ -5,8 +5,8 @@
   <p>Level: <%= @skill.level %></p>
 
   <%= erb(:errors, :locals => { :object => @skill }) %>
-
-  <form action="/skill/<%= @skill.id %>" method="post">
+  <h3>New Entry</h3>
+  <form class="add_entry" action="/skill/<%= @skill.id %>" method="post">
     Entry information: <input type="text" name="title"><br/>
     Category: <select name="category">
       <% @categories.each do |cat| %>
@@ -19,8 +19,8 @@
     <% end %>
     <br/>
     <button type="submit" class="btn btn-xs">Add Entry</button>
-  </form>
 
+  </form>
   <% if @skill.entries.any? %>
   <h3>All Entries </h3>
   <div class="timeline">
