@@ -6,8 +6,13 @@
 
   <form action="/skill/edit/<%= @skill.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
-    Edit Skill Name: <input type="text" name="name" value="<%= @skill.name %>">
+    Edit Skill Name: <input type="text" size="10" name="name" value="<%= @skill.name %>">
     <button type="submit" class="btn btn-xs btn-success">rename</button>
+  </form>
+
+  <form action="/skill/delete/<%= @skill.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    Delete Skill: <button type="submit" class="glyphicon glyphicon-remove btn btn-danger btn-xs"></button>
   </form>
 
   <%= erb(:errors, :locals => { :object => @skill }) %>
@@ -16,68 +21,68 @@
 
 
 </div>
+<% if @skill.entries.any? %>
+  <div class="col-md-4 edit_entry">
 
-<div class="col-md-4 edit_entry">
+    <h3>Edit Entries </h3>
+        <div class="timeline">
 
-  <h3>Edit Entries </h3>
-      <div class="timeline">
-
-        <ul>
-          <% @skill.entries.each do |entry| %>
-          <li>
-            <form action="/skill/entry/<%= entry.id %>" method="post">
-              <input type="hidden" name="_method" value="patch">
-              <table>
-                <tr>
-                  <td>
-                    Title
-                  </td>
-                  <td>
-                    Category
-                  </td>
-                  <td>
-                    Rating
-                  </td>
-                  <td>
-                    <button type="submit" class="btn btn-xs btn-info">Update Entry</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <input type="text" name="title" size="12" value="<%= entry.title %>"><br/>
-                  </td>
-                  <td>
-                    <select name="category">
-                      <% @categories.each do |cat| %>
-                      <option value="<%= cat.id %>" <% if entry.category_id == cat.id %> selected <% end %>> <%= cat.name %> </option>
+          <ul>
+            <% @skill.entries.each do |entry| %>
+            <li>
+              <form action="/skill/entry/<%= entry.id %>" method="post">
+                <input type="hidden" name="_method" value="patch">
+                <table>
+                  <tr>
+                    <td>
+                      Title
+                    </td>
+                    <td>
+                      Category
+                    </td>
+                    <td>
+                      Rating
+                    </td>
+                    <td>
+                      <button type="submit" class="btn btn-xs btn-info">Update Entry</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input type="text" name="title" size="12" value="<%= entry.title %>"><br/>
+                    </td>
+                    <td>
+                      <select name="category">
+                        <% @categories.each do |cat| %>
+                        <option value="<%= cat.id %>" <% if entry.category_id == cat.id %> selected <% end %>> <%= cat.name %> </option>
+                        <% end %>
+                      </select>
+                    </td>
+                    <td>
+                      <% 5.times do |time| %>
+                        <input type="radio" name="rating" value="<%= time + 1 %>" <% if (time + 1) == entry.rating %> checked <% end %>> <%= time + 1 %>
                       <% end %>
-                    </select>
-                  </td>
-                  <td>
-                    <% 5.times do |time| %>
-                      <input type="radio" name="rating" value="<%= time + 1 %>" <% if (time + 1) == entry.rating %> checked <% end %>> <%= time + 1 %>
-                    <% end %>
-                  </td>
-                </form>
-                <td>
-                  <form action="/skill/entry/<%= entry.id %>" method="post">
-                    <input type="hidden" name="_method" value="delete">
-                    <button type="submit" class="btn btn-xs btn-danger glyphicon glyphicon-remove"></button>
-
+                    </td>
                   </form>
-                </td>
-                </tr>
-              </table>
-            <hr>
-          </li>
+                  <td>
+                    <form action="/skill/entry/<%= entry.id %>" method="post">
+                      <input type="hidden" name="_method" value="delete">
+                      <button type="submit" class="btn btn-xs btn-danger glyphicon glyphicon-remove"></button>
+
+                    </form>
+                  </td>
+                  </tr>
+                </table>
+              <hr>
+            </li>
 
 
-          <% end %>
-        </ul>
+            <% end %>
+          </ul>
 
-      </div>
-</div>
-
+        </div>
+  </div>
+<% end %>
 
 <div class="col-md-4 edit_entry">
   <h3>Add New Category</h3>

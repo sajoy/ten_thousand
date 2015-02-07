@@ -20,13 +20,6 @@ post '/' do
   redirect back
 end
 
-delete '/' do
-  skill_id = params['skill_id']
-  skill = Skill.find(skill_id)
-  skill.destroy
-  redirect back
-end
-
 # skill view page
 
 get '/skill/:id' do
@@ -60,6 +53,14 @@ patch '/skill/edit/:id' do
   skill = Skill.find(s_id)
   skill.update(name: name)
   redirect back
+end
+
+
+delete '/skill/delete/:id' do
+  skill_id = params['id']
+  skill = Skill.find(skill_id)
+  skill.destroy
+  redirect '/'
 end
 
 patch '/skill/entry/:id' do

@@ -11,6 +11,15 @@ body {font-family: 'Questrial', sans-serif;}
   margin-top: 20px;
 }
 
+.col-md-3 h2 {
+  margin-top: 0;
+}
+
+.col-md-4 .timeline {
+  background-color: rgba(120,90,130, .5);
+}
+
+
 .edit_entry td{
   padding: 5px;
 

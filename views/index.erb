@@ -43,12 +43,6 @@
 
     <div class="skill">
 
-      <form class="skill_delete" action="/" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <input type="hidden" name="skill_id" value="<%= skill.id %>">
-        <button type="submit" class="glyphicon glyphicon-remove btn btn-danger btn-xs"></button>
-      </form>
-
       <h2><a href="/skill/<%= skill.id %>"><%= skill.name %></a></h2>
 
     </div>
